@@ -1,10 +1,14 @@
 class Coffee:
+    # initializing coffee with a name..
     def __init__(self, name):
+        # making the name a string..
         if not isinstance(name, str):
             raise ValueError("Name must be a string")
+        # name is not more than three characters
         if len(name) < 3:
-            raise ValueError("Name length must be at least 3 characters")
+            raise ValueError("Name is not more than three characters")
         self._name = name
+         # Initializing a list that will store the customers orders..
         self._orders = []
 
     @property
@@ -32,20 +36,25 @@ class Coffee:
 
 class Customer:
     def __init__(self, name):
+        # Initializing the class-Customer with a name..
         if not isinstance(name, str):
+            # making the name a string..
             raise ValueError("Name must be a string")
+        # Name must be between 1 and 15 characters..
         if not (1 <= len(name) <= 15):
             raise ValueError("Name must be between 1 and 15 characters")
+        # Initializing the customer's name..
         self._name = name
+        # Initializing a list that will store the customers orders..
         self._orders = []
-
-    @property
+# defines the attributes of the customer..
+    @property 
     def name(self):
         return self._name
-
+# defines the attributes of the orders..
     def add_order(self, order):
         self._orders.append(order)
-
+# creating a new method for the customer..
     def create_order(self, coffee, price):
         order = Order(self, coffee, price)
         return order
